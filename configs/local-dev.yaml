@@ -16,9 +16,9 @@ tags:
   nats: true
 
 global:
+  helmRepo: "https://internal-helm.astronomer.io"
   # Base domain for all subdomains exposed through ingress
   baseDomain: localtest.me
-
   # Name of secret containing TLS certificate
   tlsSecret: astronomer-tls
   postgresqlEnabled: true
@@ -54,6 +54,7 @@ stan:
 ## Omit resource requests
 ############################
 astronomer:
+  airflowChartVersion: 1.2.0-rc1
   astroUI:
     replicas: 1
     resources:
@@ -68,12 +69,15 @@ astronomer:
       requests:
         cpu: "0m"
         memory: "0Mi"
-
     config:
       emailConfirmation: false
       auth:
         local:
           enabled: true
+      registry:
+        protectedCustomRegistryEnabled: true
+      deployments:
+        enableUpdateDeploymentImageEndpoint: true
   commander:
     replicas: 1
     resources:
