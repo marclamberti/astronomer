@@ -31,7 +31,7 @@ sed -i \
   "$BIN_DIR/create-initial-user.json"
 
 # Create new user by posting to houston
-curl -v \
+curl --insecure -v \
   -H "content-type: application/json" \
   -d "@$BIN_DIR/create-initial-user.json" \
   "$HOST"
