@@ -1,12 +1,20 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+if [[ ! "${#@}" -eq 1 ]] ; then
+  echo "ERROR: Invalid number of arguments: ${#@}"
+  echo
+  echo "Usage:"
+  echo "    ${0##*/} <workspace_name>"
+  exit 1
+fi
+
 BIN_DIR="${PWD}/bin/labs/"
 
 HOST="https://houston.kubernetes-vm.${INSTRUQT_PARTICIPANT_ID}.instruqt.io/v1"
 NAMESPACE="astronomer"
 
-LABEL="astro"
+LABEL="$1"
 DESCRIPTION="Company workspace"
 
 ### Make sure we have the same kube creds when needing to be root
