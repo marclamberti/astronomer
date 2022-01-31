@@ -194,6 +194,8 @@ s3:
       key: connection
 - name: JWT__CERT_PATH
   value: {{ template "houston.jwtCertificateDir" . }}
+- name: JWT__PASSPHRASE
+  value: "secretpassword"
 - name: JWT__REGISTRY__CERT_PATH
   value: {{ template "houston.jwtRegistryCertificatePath" . }}
 - name: JWT__REGISTRY__ISSUER
