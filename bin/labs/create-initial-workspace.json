@@ -1,0 +1,5 @@
+{
+  "operationName": "createWorkspace",
+  "variables": {},
+  "query": "mutation createWorkspace { createWorkspace(label:\"__LABEL__\", description: \"__DESCRIPTION__\") { id label description } }"
+}
