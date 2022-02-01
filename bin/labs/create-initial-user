@@ -22,10 +22,16 @@ sed -i \
   "$BIN_DIR/create-initial-user.json"
 
 # Create new user by posting to houston
-curl --insecure -v \
+NEW_USER=$(curl --insecure -v \
   -H "content-type: application/json" \
   -d "@$BIN_DIR/create-initial-user.json" \
-  "$HOST"
+  "$HOST")
+
+echo $NEW_USER
+
+export TOKEN = $NEW_USER | jq -r '.token.value'
+
+echo $TOKEN
 
 # restore the JSON file
 git checkout "$BIN_DIR/create-initial-user.json"

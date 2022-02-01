@@ -186,7 +186,7 @@ s3:
       key: {{ default "value" $config.secretKey }}
 {{- end }}
 - name: NODE_ENV
-  value: "development"
+  value: "production"
 - name: DATABASE__CONNECTION
   valueFrom:
     secretKeyRef:
@@ -194,8 +194,6 @@ s3:
       key: connection
 - name: JWT__CERT_PATH
   value: {{ template "houston.jwtCertificateDir" . }}
-- name: JWT__PASSPHRASE
-  value: "secretpassword"
 - name: JWT__REGISTRY__CERT_PATH
   value: {{ template "houston.jwtRegistryCertificatePath" . }}
 - name: JWT__REGISTRY__ISSUER
