@@ -24,8 +24,7 @@ sed -i \
 # Create new user by posting to houston
 TOKEN=$(curl --insecure -v $HOST \
   -H "content-type: application/json" \
-  -d "@$BIN_DIR/create-initial-user.json" \
-  | jq -r 'data.createUser.token.value')
+  -d "@$BIN_DIR/create-initial-user.json" | jq -r 'data.createUser.token.value')
 
 echo $TOKEN
 
