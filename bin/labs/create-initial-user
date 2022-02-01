@@ -29,7 +29,7 @@ NEW_USER=$(curl --insecure -v \
 
 echo $NEW_USER
 
-export TOKEN = $NEW_USER | jq -r '.token.value'
+export TOKEN=$NEW_USER | jq -r '.token.value'
 
 echo $TOKEN
 
