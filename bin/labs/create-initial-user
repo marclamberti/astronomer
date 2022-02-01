@@ -28,7 +28,7 @@ NEW_USER=$(curl --insecure -v "$HOST" \
 
 echo $NEW_USER
 
-TOKEN=$(echo \'$NEW_USER\' | jq -r '.data.createUser.token.value')
+TOKEN=$(echo "$NEW_USER" | jq -r '.data.createUser.token.value')
 
 echo $TOKEN
 
