@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+if [[ ! "${#@}" -eq 1 ]] ; then
+  echo "ERROR: Invalid number of arguments: ${#@}"
+  echo
+  echo "Usage:"
+  echo "    ${0##*/} <workspace_name>"
+  exit 1
+fi
+
+BIN_DIR="${PWD}/bin/labs/"
+
+HOST="https://houston.kubernetes-vm.${INSTRUQT_PARTICIPANT_ID}.instruqt.io/v1"
+NAMESPACE="astronomer"
+
+LABEL="$1"
+DESCRIPTION="Company workspace"
+
+sleep 10
+
+# Fill in file for houston post
+sed -i \
+  -e "s/__LABEL__/$LABEL/" \
+  -e "s/__DESCRIPTION__/$DESCRIPTION/" \
+  "$BIN_DIR/create-initial-workspace.json"
+
+# Create new workspace by posting to houston
+curl --insecure -v \
+  -H "content-type: application/json" \
+  -d "@$BIN_DIR/create-initial-workspace.json" \
+  "$HOST"
+
+# restore the JSON file
+git checkout "$BIN_DIR/create-initial-workspace.json"
