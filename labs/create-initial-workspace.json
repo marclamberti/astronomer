@@ -1,5 +1,5 @@
 {
   "operationName": "createWorkspace",
   "variables": {},
-  "query": "mutation createWorkspace { createWorkspace(label:\"astro\", description: \"my_workspace\") { id } }"
+  "query": "mutation createWorkspace { createWorkspace(label:\"astro\", description: \"my workspace\") { id } }"
 }
