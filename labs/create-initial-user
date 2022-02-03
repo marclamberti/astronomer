@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-BIN_DIR="${PWD}/bin/labs/"
+BIN_DIR="${PWD}/labs/"
 
 HOST="https://houston.kubernetes-vm.${INSTRUQT_PARTICIPANT_ID}.instruqt.io/v1"
 NAMESPACE="astronomer"
